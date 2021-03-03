@@ -1,3 +1,39 @@
+function showThree () {
+    basic.showLeds(`
+        . . . # #
+        . . . . #
+        . . # . .
+        # . . . .
+        # # . . .
+        `)
+}
+function chooseDisplayMode () {
+    basic.showString("#")
+    for (let index = 0; index < 5; index++) {
+        basic.clearScreen()
+        basic.pause(50)
+        basic.showLeds(`
+            . . # . .
+            . # # . .
+            # # # # #
+            . # # . .
+            . . # . .
+            `)
+    }
+    basic.clearScreen()
+    showFive()
+    for (let index = 0; index < 5; index++) {
+        basic.clearScreen()
+        basic.pause(50)
+        basic.showLeds(`
+            . . # . .
+            . . # # .
+            # # # # #
+            . . # # .
+            . . # . .
+            `)
+    }
+}
 function rollNumber () {
     die1 = randint(1, 6)
     die2 = randint(1, 6)
@@ -27,10 +63,10 @@ function rollNumber () {
     basic.showIcon(IconNames.Heart)
 }
 function rollPic () {
+    let picList: Image[] = []
     die1 = randint(1, 6)
     die2 = randint(1, 6)
     for (let index = 0; index < 6; index++) {
-        picList[randint(0, 5)].showImage(0)
         basic.pause(50)
     }
     basic.showLeds(`
@@ -57,9 +93,39 @@ function rollPic () {
 input.onButtonPressed(Button.A, function () {
     mode = 0
 })
+function showTwo () {
+    basic.showLeds(`
+        . . . # #
+        . . . . #
+        . . . . .
+        # . . . .
+        # # . . .
+        `)
+}
+function roll (num: number) {
+	
+}
+function showFour () {
+    basic.showLeds(`
+        # # . # #
+        # . . . #
+        . . . . .
+        # . . . #
+        # # . # #
+        `)
+}
 input.onButtonPressed(Button.B, function () {
     mode = 1
 })
+function showSix () {
+    basic.showLeds(`
+        # # . # #
+        . . . . .
+        # # . # #
+        . . . . .
+        # # . # #
+        `)
+}
 input.onGesture(Gesture.Shake, function () {
     if (mode == 0) {
         rollNumber()
@@ -67,75 +133,25 @@ input.onGesture(Gesture.Shake, function () {
         rollPic()
     }
 })
+function showOne () {
+    basic.showLeds(`
+        . . . . .
+        . . # . .
+        . # # # .
+        . . # . .
+        . . . . .
+        `)
+}
+function showFive () {
+    basic.showLeds(`
+        # # . # #
+        # . . . #
+        . . # . .
+        # . . . #
+        # # . # #
+        `)
+}
 let mode = 0
 let die2 = 0
 let die1 = 0
-let picList: Image[] = []
-let pic1 = images.createImage(`
-    . . . . .
-    . . # . .
-    . # # # .
-    . . # . .
-    . . . . .
-    `)
-let pic2 = images.createImage(`
-    . . . # #
-    . . . . #
-    . . . . .
-    # . . . .
-    # # . . .
-    `)
-let pic3 = images.createImage(`
-    . . . # #
-    . . . . #
-    . . # . .
-    # . . . .
-    # # . . .
-    `)
-let pic4 = images.createImage(`
-    # # . # #
-    # . . . #
-    . . . . .
-    # . . . #
-    # # . # #
-    `)
-let pic5 = images.createImage(`
-    # # . # #
-    # . . . #
-    . . # . .
-    # . . . #
-    # # . # #
-    `)
-let pic6 = images.createImage(`
-    # # . # #
-    . . . . .
-    # # . # #
-    . . . . .
-    # # . # #
-    `)
-picList = [pic1, pic2, pic3, pic4, pic5, pic6]
-basic.showString("#")
-for (let index = 0; index < 5; index++) {
-    basic.clearScreen()
-    basic.pause(50)
-    basic.showLeds(`
-        . . # . .
-        . # # . .
-        # # # # #
-        . # # . .
-        . . # . .
-        `)
-}
-basic.clearScreen()
-pic5.showImage(0)
-for (let index = 0; index < 5; index++) {
-    basic.clearScreen()
-    basic.pause(50)
-    basic.showLeds(`
-        . . # . .
-        . . # # .
-        # # # # #
-        . . # # .
-        . . # . .
-        `)
-}
+let pic1 = 0
