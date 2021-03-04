@@ -1,6 +1,7 @@
 let die1 = 0
 let die2 = 0
 function showThree () {
+    basic.clearScreen()
     basic.showLeds(`
         . . . # #
         . . . . #
@@ -52,6 +53,7 @@ function determinePicture (num: number) {
     }
 }
 function showTwo () {
+    basic.clearScreen()
     basic.showLeds(`
         . . . # #
         . . . . #
@@ -61,6 +63,7 @@ function showTwo () {
         `)
 }
 function showFour () {
+    basic.clearScreen()
     basic.showLeds(`
         # # . # #
         # . . . #
@@ -70,6 +73,7 @@ function showFour () {
         `)
 }
 function showSix () {
+    basic.clearScreen()
     basic.showLeds(`
         # # . # #
         . . . . .
@@ -79,15 +83,13 @@ function showSix () {
         `)
 }
 input.onGesture(Gesture.Shake, function () {
-    die1 = randint(1, 6)
-    die2 = randint(1, 6)
     for (let index = 0; index < 6; index++) {
         determinePicture(randint(1, 6))
-        basic.pause(50)
+        basic.pause(10)
     }
-    for (let index = 0; index < 2; index++) {
+    for (let index = 0; index < 3; index++) {
         basic.showIcon(IconNames.Chessboard)
-        basic.clearScreen()
+        basic.pause(10)
         basic.showLeds(`
             # # # # #
             # # # # #
@@ -95,8 +97,10 @@ input.onGesture(Gesture.Shake, function () {
             # # # # #
             # # # # #
             `)
-        basic.pause(1000)
+        basic.pause(10)
     }
+    die1 = randint(1, 6)
+    die2 = randint(1, 6)
     determinePicture(die1)
     basic.pause(1500)
     basic.showLeds(`
@@ -108,20 +112,24 @@ input.onGesture(Gesture.Shake, function () {
         `)
     determinePicture(die2)
     basic.pause(1500)
-    basic.showIcon(IconNames.StickFigure)
+    basic.clearScreen()
+    basic.showString("=")
     basic.showNumber(die1 + die2)
+    basic.pause(1500)
     basic.showIcon(IconNames.StickFigure)
 })
 function showOne () {
+    basic.clearScreen()
     basic.showLeds(`
+        . . . # .
         . . . . .
         . . # . .
-        . # # # .
-        . . # . .
+        . . . . .
         . . . . .
         `)
 }
 function showFive () {
+    basic.clearScreen()
     basic.showLeds(`
         # # . # #
         # . . . #
